@@ -1,0 +1,22 @@
+<div class="container p-4">
+
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-4" *ngFor="let blog of allBlogs">
+            <mat-card class="blog-card cursor-pointer" appearance="outlined">
+                <img mat-card-image [src]="'http://localhost:3000/' + blog.coverImageURL"
+                    alt="blog-cover">
+                <mat-card-content>
+                    <h5>{{ blog.title }}</h5>
+                    <div class="blog-card-body">
+                        {{ blog.body }}
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button>LIKE</button>
+                    <button mat-button>SHARE</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+
+</div>
