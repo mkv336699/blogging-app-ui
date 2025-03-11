@@ -4,7 +4,7 @@
         <div class="col-12 col-sm-6 col-md-4" *ngFor="let blog of allBlogs">
             <mat-card class="blog-card cursor-pointer" appearance="outlined">
                 <img mat-card-image [src]="'http://localhost:3000/' + blog.coverImageURL"
-                    alt="blog-cover">
+                    alt="blog-cover" ngSrcset="200w, 200w">
                 <mat-card-content>
                     <h5>{{ blog.title }}</h5>
                     <div class="blog-card-body">

@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 .items-center {
     align-items: center;
 }
@@ -6,4 +8,8 @@
     color: whitesmoke;
     font-size: 25px;
     font-weight: bold;
+}
+
+::ng-deep .customize {
+    @include mat.icon-overrides(( color: whitesmoke ));
 }
