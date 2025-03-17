@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { API_URLS } from '../constants/api-urls';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class BlogService {
   constructor(private http: HttpClient) { }
 
   getAllBlogs() {
-    return this.http.get('http://localhost:3000/api/blogs');
+    let url = API_URLS.GET_ALL_BLOGS;
+    return this.http.get(url);
   }
 }
