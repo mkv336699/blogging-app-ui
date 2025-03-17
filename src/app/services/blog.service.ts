@@ -13,4 +13,9 @@ export class BlogService {
     let url = API_URLS.GET_ALL_BLOGS;
     return this.http.get(url);
   }
+
+  getBlogById(id: string) {
+    let url = API_URLS.GET_BLOG_BY_ID.replace("{id}", id);
+    return this.http.get(url);
+  }
 }

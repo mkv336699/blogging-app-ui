@@ -33,7 +33,7 @@ export class HeaderComponent {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(r => {
-      this.showOptions = location.pathname.search('/auth/') > -1;
+      this.showOptions = location.pathname.search('/auth/') == -1;
     });
   }
 
