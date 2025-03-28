@@ -32,8 +32,9 @@ export class HeaderComponent {
 
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
-    ).subscribe(r => {
-      this.showOptions = location.pathname.search('/auth/') == -1;
+    ).subscribe((r: any) => {
+      this.showOptions = r.url.search('/auth/') == -1;
+      this.isLoggedIn = localStorage.getItem('user') != null;
     });
   }
 
@@ -42,6 +43,7 @@ export class HeaderComponent {
     if (logoutRes) {
       localStorage.clear();
       this.router.navigate(['/home']);
+      this.isLoggedIn = false;
     }
   }
 }
