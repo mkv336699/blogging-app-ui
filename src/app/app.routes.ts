@@ -13,15 +13,11 @@ export const routes: Routes = [
     {
         path: 'blog',
         children: [
-            {
-                path: '',
-                redirectTo: 'home',
-                pathMatch: 'full'
-            },
-            {
-                path: ':id',
-                loadComponent: () => import('./blog/blog.component').then(m => m.BlogComponent),
-            },
+            // {
+            //     path: '',
+            //     redirectTo: 'home',
+            //     pathMatch: 'full'
+            // },
             {
                 path: 'create',
                 loadComponent: () => import('./blog/create-blog/create-blog.component').then(m => m.CreateBlogComponent),
@@ -29,7 +25,11 @@ export const routes: Routes = [
             {
                 path: 'edit/:id',
                 loadComponent: () => import('./blog/create-blog/create-blog.component').then(m => m.CreateBlogComponent),
-            }
+            },
+            {
+                path: ':id',
+                loadComponent: () => import('./blog/blog.component').then(m => m.BlogComponent),
+            },
         ]
     },
     {

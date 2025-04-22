@@ -13,3 +13,7 @@
 ::ng-deep .customize {
     @include mat.icon-overrides(( color: whitesmoke ));
 }
+
+.mt-m4 {
+    margin-top: -4% !important;
+}

@@ -1,29 +1,35 @@
 <nav class="navbar navbar-dark bg-dark px-5 py-2 justify-content-between">
-    <div class="d-flex items-center gap-2">
+    <div class="d-flex items-center gap-2 cursor-pointer" [routerLink]="['/home']">
         <img src="bird.png" height="50" width="50">
         <div class="c-title">Birdie Blog</div>
     </div>
 
-    <ng-container *ngIf="showOptions">
-        <button class="customize" *ngIf="isLoggedIn; else notLoggedIn" mat-icon-button [matMenuTriggerFor]="menu"
-            aria-label="Example icon-button with a menu">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-                <mat-icon>person</mat-icon>
-                <span>Profile</span>
+    <div class="d-flex gap-2 items-center">
+        <ng-container *ngIf="showOptions">
+            <div class="text-white cursor-pointer" [routerLink]="['/blog/create']">
+                <strong>Create Blog</strong>
+            </div>
+
+            <button class="customize mt-m4" *ngIf="isLoggedIn; else notLoggedIn" mat-icon-button [matMenuTriggerFor]="menu"
+                aria-label="Example icon-button with a menu">
+                <mat-icon>menu</mat-icon>
             </button>
-            <button mat-menu-item>
-                <mat-icon>settings</mat-icon>
-                <span>Settings</span>
-            </button>
-            <button mat-menu-item (click)="logout()">
-                <mat-icon>logout</mat-icon>
-                <span>Logout</span>
-            </button>
-        </mat-menu>
-    </ng-container>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                    <mat-icon>person</mat-icon>
+                    <span>Profile</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>settings</mat-icon>
+                    <span>Settings</span>
+                </button>
+                <button mat-menu-item (click)="logout()">
+                    <mat-icon>logout</mat-icon>
+                    <span>Logout</span>
+                </button>
+            </mat-menu>
+        </ng-container>
+    </div>
 </nav>
 
 <ng-template #notLoggedIn>
