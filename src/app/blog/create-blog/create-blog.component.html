@@ -13,7 +13,7 @@
 
         <div class="mb-3">
             <label for="coverImage" class="form-label">Cover Image</label>
-            <input type="file" class="form-control" id="coverImage" name="coverImage" formControlName="coverImageURL" required>
+            <input type="file" class="form-control" id="coverImage" name="coverImage" (change)="onFileSelected($event)" accept="image/*" required>
         </div>
 
         <div class="d-flex gap-2">

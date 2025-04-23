@@ -18,4 +18,9 @@ export class BlogService {
     let url = API_URLS.GET_BLOG_BY_ID.replace("{id}", id);
     return this.http.get(url);
   }
+
+  createBlog(blog: any) {
+    let url = API_URLS.CREATE_BLOG;
+    return this.http.post(url, blog);
+  }
 }

@@ -3,5 +3,5 @@ export const API_URLS = {
     SIGN_UP: "/api/users",
     GET_ALL_BLOGS: "/api/blogs",
     GET_BLOG_BY_ID: "/api/blogs/{id}",
-    CREATE_BLOGS: "api/blogs",
+    CREATE_BLOG: "api/blogs",
 }
