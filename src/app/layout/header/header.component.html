@@ -6,7 +6,7 @@
 
     <div class="d-flex gap-2 items-center">
         <ng-container *ngIf="showOptions">
-            <div class="text-white cursor-pointer" [routerLink]="['/blog/create']">
+            <div class="text-white cursor-pointer" *ngIf="isLoggedIn" [routerLink]="['/blog/create']">
                 <strong>Create Blog</strong>
             </div>
 

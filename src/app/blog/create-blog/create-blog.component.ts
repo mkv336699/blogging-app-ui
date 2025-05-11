@@ -42,7 +42,7 @@ export class CreateBlogComponent {
     const formData = new FormData();
     formData.append('title', this.blogForm.get('title')?.value || '');
     formData.append('body', this.blogForm.get('body')?.value || '');
-    formData.append('coverImage', this.selectedFile);
+    formData.append('coverImageURL', this.selectedFile);
 
     this.blogService.createBlog(formData).subscribe((response) => {
       console.log('Blog created successfully:', response);
