@@ -4,4 +4,5 @@ export const API_URLS = {
     GET_ALL_BLOGS: "/api/blogs",
     GET_BLOG_BY_ID: "/api/blogs/{id}",
     CREATE_BLOG: "/api/blogs",
+    CHECK_TOKEN: "/api/users/refresh-token"
 }
