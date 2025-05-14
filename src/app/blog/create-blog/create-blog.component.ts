@@ -3,6 +3,9 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { BlogService } from '../../services/blog.service';
+import { ToasterService } from '../../services/toaster.service';
+import { Router } from '@angular/router';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-blog',
@@ -10,7 +13,8 @@ import { BlogService } from '../../services/blog.service';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule
   ],
   templateUrl: './create-blog.component.html',
   styleUrl: './create-blog.component.scss'
@@ -24,7 +28,11 @@ export class CreateBlogComponent {
     coverImageURL: new FormControl(''),
   });
 
-  constructor(private blogService: BlogService) { }
+  constructor(
+    private blogService: BlogService,
+    private toasterService: ToasterService,
+    private router: Router
+  ) { }
 
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -35,7 +43,7 @@ export class CreateBlogComponent {
 
   onSubmit() {
     if (!this.selectedFile) {
-      console.error('No file selected');
+      this.toasterService.showError('Please select a cover image');
       return;
     }
 
@@ -44,8 +52,15 @@ export class CreateBlogComponent {
     formData.append('body', this.blogForm.get('body')?.value || '');
     formData.append('coverImageURL', this.selectedFile);
 
-    this.blogService.createBlog(formData).subscribe((response) => {
-      console.log('Blog created successfully:', response);
+    this.blogService.createBlog(formData).subscribe({
+      next: (response: any) => {
+        this.toasterService.showSuccess('Blog created successfully!');
+        // Navigate to the blog view page
+        this.router.navigate(['/blog', response.data._id]);
+      },
+      error: (error) => {
+        this.toasterService.showError(error.message || 'Failed to create blog');
+      }
     });
   }
 }
