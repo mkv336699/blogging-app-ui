@@ -30,7 +30,7 @@ export class AuthService {
     return this.http.get(API_URLS.CHECK_TOKEN).pipe(
       map((response: any) => {
         if (response.authToken) {
-          localStorage.setItem('authToken', response.newToken);
+          localStorage.setItem('authToken', response.authToken);
         }
         return true;
       }),
