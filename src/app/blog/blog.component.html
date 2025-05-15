@@ -1,20 +1,53 @@
-<div class="container mt-2">
-    <div class="d-flex gap-2 justify-content-between">
-        <div class="w-30 d-flex gap-2">
-            <img [src]="baseURL + blog?.createdBy?.profileImageURL" width="25" height="25">
-            <p><b>{{ blog?.createdBy?.name }}</b></p>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h1>{{ blog.title }}</h1>
+            <p class="text-muted">Posted on {{ blog.date }}</p>
+            <img [src]="baseURL + blog.coverImageURL" class="img-fluid mb-4" alt="Blog cover image">
+            <div class="blog-content">
+                {{ blog.body }}
+            </div>
         </div>
+    </div>
 
-        <p>
-            {{ blog?.date }}    
-        </p>
-    </div>
-    <div>
-        <h2>{{ blog?.title }}</h2>
-    </div>
-    <div>
-        <!-- <pre> -->
-            {{ blog?.body }}
-        <!-- </pre> -->
+    <!-- Comments Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3>Comments</h3>
+            <mat-divider class="mb-4"></mat-divider>
+
+            <!-- Comment Form -->
+            <div class="comment-form mb-4" *ngIf="isLoggedIn">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Write a comment</mat-label>
+                    <textarea matInput rows="3" [(ngModel)]="newComment" placeholder="Share your thoughts..."></textarea>
+                </mat-form-field>
+                <div class="d-flex justify-content-end">
+                    <button mat-raised-button color="primary" (click)="submitComment()">Post Comment</button>
+                </div>
+            </div>
+
+            <!-- Comments List -->
+            <div class="comments-list">
+                <mat-card *ngFor="let comment of comments" class="mb-3">
+                    <mat-card-content>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <img [src]="baseURL + (comment.createdBy?.profileImageURL || 'default-avatar.png')" 
+                                     class="comment-avatar" 
+                                     alt="Profile picture">
+                                <strong>{{ comment.createdBy?.name || 'Anonymous' }}</strong>
+                            </div>
+                            <small class="text-muted">{{ comment.createdAt | date:'medium' }}</small>
+                        </div>
+                        <p class="mb-0">{{ comment.comment }}</p>
+                    </mat-card-content>
+                </mat-card>
+
+                <div *ngIf="comments.length === 0" class="text-center text-muted">
+                    No comments yet. Be the first to comment!
+                </div>
+            </div>
+        </div>
     </div>
 </div>
