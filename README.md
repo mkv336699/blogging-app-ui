@@ -4,12 +4,32 @@ Birdie Blog is a modern, user-friendly blogging platform built with Angular and 
 
 ## Features
 
+### Blog Management
 - 📝 Create and edit blog posts with rich text content
 - 🖼️ Upload cover images for your blog posts
-- 🔐 Secure user authentication
 - 📱 Responsive design for all devices
-- ⚡ Real-time loading states and error handling
 - 🎨 Modern Material Design UI
+
+### Authentication
+- 🔐 Secure user authentication
+- 🔄 Automatic token refresh
+- 👤 User profile management
+- 🔒 Protected routes
+
+### Comment System
+- 💬 Interactive comment section
+- 👤 User profile pictures in comments
+- ⏰ Timestamp for each comment
+- 🔄 Real-time comment updates
+- 👥 Anonymous comment support
+- 🎯 Comment moderation capabilities
+
+### User Experience
+- ⚡ Real-time loading states
+- 🚨 Error handling with user feedback
+- 🎯 Intuitive navigation
+- 📱 Mobile-responsive design
+- 🎨 Consistent Material Design theme
 
 ## Prerequisites
 
@@ -57,18 +77,28 @@ src/
 - Login and signup functionality
 - JWT-based authentication
 - Protected routes
+- Automatic token refresh
 
 ### Blog Management
 - Create new blog posts
 - Upload cover images
 - View all blogs
 - View individual blog posts
+- Rich text content support
+
+### Comment System
+- Add comments to blog posts
+- View all comments with user details
+- Profile pictures in comments
+- Timestamp display
+- Real-time updates
 
 ### User Interface
 - Material Design components
 - Responsive layout
 - Loading indicators
 - Error handling
+- Toast notifications
 
 ## API Integration
 
@@ -76,6 +106,8 @@ The application integrates with a backend API for:
 - User authentication
 - Blog CRUD operations
 - Image uploads
+- Comment management
+- Token validation
 
 ## Development
 
