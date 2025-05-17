@@ -44,7 +44,7 @@ export class LoginComponent {
           _id: res._id,
           email: res.email,
           name: res.name,
-          profileImageURL: res.rofileImageURL,
+          profileImageURL: res.profileImageURL,
           role: res.role,
         }
         localStorage.setItem("user", JSON.stringify(user));

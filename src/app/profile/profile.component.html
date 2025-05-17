@@ -1,0 +1,71 @@
+<div class="profile-container">
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <div class="profile-cover"></div>
+        <div class="profile-info">
+            <div class="profile-picture-container">
+                <img [src]="baseURL + (user.profileImageURL || 'default-avatar.png')" 
+                     class="profile-picture" 
+                     alt="Profile picture">
+                <div class="profile-picture-overlay" (click)="triggerFileInput()">
+                    <mat-icon>camera_alt</mat-icon>
+                    <span>Change Photo</span>
+                </div>
+                <input type="file" 
+                       id="profilePicInput" 
+                       hidden 
+                       accept="image/*" 
+                       (change)="onFileSelected($event)">
+            </div>
+            <div class="profile-details">
+                <h1>{{ user.name }}</h1>
+                <p class="user-email">{{ user.email }}</p>
+                <div class="user-stats">
+                    <div class="stat">
+                        <span class="stat-value">{{ userBlogs.length }}</span>
+                        <span class="stat-label">Blogs</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">{{ getTotalLikes() }}</span>
+                        <span class="stat-label">Likes</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">{{ getTotalComments() }}</span>
+                        <span class="stat-label">Comments</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Progress -->
+    <mat-progress-bar *ngIf="isUploading" 
+                      mode="indeterminate" 
+                      class="upload-progress">
+    </mat-progress-bar>
+
+    <!-- User's Blogs -->
+    <div class="blogs-section">
+        <h2>My Blogs</h2>
+        <div class="blogs-grid">
+            <mat-card *ngFor="let blog of userBlogs" class="blog-card">
+                <mat-card-content>
+                    <h3>{{ blog.title }}</h3>
+                    <div class="blog-meta">
+                        <span class="date">{{ blog.date | date:'mediumDate' }}</span>
+                        <div class="blog-stats">
+                            <span class="stat">
+                                <mat-icon>thumb_up</mat-icon>
+                                {{ blog.likes }}
+                            </span>
+                            <span class="stat">
+                                <mat-icon>comment</mat-icon>
+                                {{ blog.comments }}
+                            </span>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

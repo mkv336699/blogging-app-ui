@@ -13,11 +13,6 @@ export const routes: Routes = [
     {
         path: 'blog',
         children: [
-            // {
-            //     path: '',
-            //     redirectTo: 'home',
-            //     pathMatch: 'full'
-            // },
             {
                 path: 'create',
                 loadComponent: () => import('./blog/create-blog/create-blog.component').then(m => m.CreateBlogComponent),
@@ -44,6 +39,14 @@ export const routes: Routes = [
                 loadComponent: () => import('./auth/signup/signup.component').then(m => m.SignupComponent),
             },
         ]
+    },
+    {
+        path: 'settings',
+        loadComponent: () => import('./home/home.component').then(m => m.HomeComponent)
+    },
+    {
+        path: 'profile',
+        loadComponent: () => import('./profile/profile.component').then(m => m.ProfileComponent)
     },
     //  Page not found
     // {
