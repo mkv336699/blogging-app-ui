@@ -19,10 +19,10 @@ export class BlogService {
     return throwError(() => error);
   }
 
-  getAllBlogs() {
+  getAllBlogs(criteria: object, pagination: object) {
     this.loadingService.showLoading();
     let url = API_URLS.GET_ALL_BLOGS;
-    return this.http.get(url).pipe(
+    return this.http.post(url, { criteria, pagination }).pipe(
       catchError(this.handleError.bind(this)),
       finalize(() => this.loadingService.hideLoading())
     );

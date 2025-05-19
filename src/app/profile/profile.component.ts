@@ -7,6 +7,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ToasterService } from '../services/toaster.service';
 import { HttpClient } from '@angular/common/http';
+import { BlogService } from '../services/blog.service';
 
 @Component({
   selector: 'app-profile',
@@ -31,12 +32,19 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private toasterService: ToasterService
+    private toasterService: ToasterService,
+    private blogService: BlogService,
   ) {}
 
   ngOnInit() {
     this.loadUserData();
     this.loadUserBlogs();
+
+    const userData = localStorage.getItem("user");
+    const criteria = {
+      "createdBy": userData ? JSON.parse(userData)._id : undefined
+    }
+    this.blogService.getAllBlogs(criteria, {}).subscribe();
   }
 
   loadUserData() {

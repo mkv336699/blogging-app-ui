@@ -35,7 +35,7 @@ export class HomeComponent {
   }
 
   getBlogs() {
-    this.blogService.getAllBlogs().subscribe((res: any) => {
+    this.blogService.getAllBlogs({}, {}).subscribe((res: any) => {
       console.log("getAllBlogs", res);
       if (res && res.data) {
         this.allBlogs = res.data;
