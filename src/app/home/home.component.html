@@ -1,5 +1,4 @@
 <div class="container p-4">
-
     <div class="row">
         <div class="col-12 col-sm-6 col-md-4 mt-4" *ngFor="let blog of allBlogs">
             <mat-card class="blog-card cursor-pointer" appearance="outlined" [routerLink]="`/blog/${blog._id}`">
@@ -19,4 +18,11 @@
         </div>
     </div>
 
+    <mat-paginator 
+        [length]="totalBlogs"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[12, 24, 36]"
+        (page)="onPageChange($event)"
+        aria-label="Select page">
+    </mat-paginator>
 </div>
